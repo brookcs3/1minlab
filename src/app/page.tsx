@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex min-h-screen w-full flex-col bg-background">
       <header className="sticky top-0 z-10 border-b bg-card/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-          <h1 className="font-headline text-2xl font-bold">Lab Write-Ups</h1>
+          <h1 className="font-headline text-2xl font-bold">1 Min Demos</h1>
           <p className="text-sm text-muted-foreground">Audio & Deep Learning</p>
         </div>
       </header>
