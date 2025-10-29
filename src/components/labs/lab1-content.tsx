@@ -1,7 +1,17 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 export function Lab1Content() {
   return (
     <>
       <h3>Lab 1: Data Integration and Preparation - 1-Minute Presentation Guide</h3>
+      <p>
+        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+      </p>
       <h4>How We Present This in Exactly One Minute!</h4>
       <p>
         Let&apos;s crush this 1-minute presentation! We&apos;re going to live-code our way through audio loading and visualization, showing how audio becomes numerical data for machine learning. It&apos;s fast, it&apos;s live, and it demonstrates the foundation of our entire audio pipeline!
@@ -123,51 +133,59 @@ Time frames: 646`}
         <li>[ ] Spectrogram preview shows transformation</li>
         <li>[ ] Concepts explained clearly in 1 minute</li>
       </ul>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1" className="border-t mt-4 pt-4">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Setup Instructions</AccordionTrigger>
+          <AccordionContent>
+            <div className="prose max-w-none pt-4">
+              <h4>Setup Beforehand (15-20 minutes total prep time)</h4>
+              <p>Each team member will assemble their own code and working repository for this lab.</p>
 
-      <h4>Setup Beforehand (15-20 minutes total prep time)</h4>
-      <p>Each team member will assemble their own code and working repository for this lab.</p>
+              <p><strong>Environment Setup (5-7 minutes)</strong></p>
+              <ul>
+                <li>Install Dependencies: <code>pip install librosa numpy matplotlib</code></li>
+                <li>Verify Installation: Test imports in Python environment</li>
+                <li>IDE Setup: Prepare Jupyter notebook or Python IDE with code execution capabilities</li>
+              </ul>
 
-      <p><strong>Environment Setup (5-7 minutes)</strong></p>
-      <ul>
-        <li>Install Dependencies: <code>pip install librosa numpy matplotlib</code></li>
-        <li>Verify Installation: Test imports in Python environment</li>
-        <li>IDE Setup: Prepare Jupyter notebook or Python IDE with code execution capabilities</li>
-      </ul>
+              <p><strong>Code Assembly and Repository Setup (7-10 minutes)</strong></p>
+              <ul>
+                <li>Create Working Directory: Set up dedicated folder for Lab 1</li>
+                <li>Assemble Code Files:
+                  <ul>
+                    <li>Create <code>lab1_basic.py</code> with functions: <code>load_audio_basic()</code>, <code>visualize_waveform()</code>, <code>spectrogram_preview()</code></li>
+                    <li>Copy/paste from provided code examples or write from scratch</li>
+                    <li>Add proper imports and docstrings</li>
+                  </ul>
+                </li>
+                <li>Test Code Independently: Run functions with sample data to ensure they work</li>
+                <li>Version Control: Initialize git repo and commit working code</li>
+              </ul>
 
-      <p><strong>Code Assembly and Repository Setup (7-10 minutes)</strong></p>
-      <ul>
-        <li>Create Working Directory: Set up dedicated folder for Lab 1</li>
-        <li>Assemble Code Files:
-          <ul>
-            <li>Create <code>lab1_basic.py</code> with functions: <code>load_audio_basic()</code>, <code>visualize_waveform()</code>, <code>spectrogram_preview()</code></li>
-            <li>Copy/paste from provided code examples or write from scratch</li>
-            <li>Add proper imports and docstrings</li>
-          </ul>
-        </li>
-        <li>Test Code Independently: Run functions with sample data to ensure they work</li>
-        <li>Version Control: Initialize git repo and commit working code</li>
-      </ul>
+              <p><strong>Files and Assets Preparation (3-5 minutes)</strong></p>
+              <ul>
+                <li>Audio File Acquisition: Obtain or download <code>sample_audio.wav</code> (30-second clip recommended)</li>
+                <li>Alternative Audio Sources: Prepare fallback options (librosa examples, personal audio files)</li>
+                <li>Test File Loading: Verify audio file loads correctly in your environment</li>
+              </ul>
 
-      <p><strong>Files and Assets Preparation (3-5 minutes)</strong></p>
-      <ul>
-        <li>Audio File Acquisition: Obtain or download <code>sample_audio.wav</code> (30-second clip recommended)</li>
-        <li>Alternative Audio Sources: Prepare fallback options (librosa examples, personal audio files)</li>
-        <li>Test File Loading: Verify audio file loads correctly in your environment</li>
-      </ul>
+              <p><strong>Hardware and Display Verification (2-3 minutes)</strong></p>
+              <ul>
+                <li>Display Setup: Confirm matplotlib plots render properly</li>
+                <li>Audio Playback: Optional - test audio playback for verification</li>
+                <li>Performance Check: Time loading of sample audio file</li>
+              </ul>
 
-      <p><strong>Hardware and Display Verification (2-3 minutes)</strong></p>
-      <ul>
-        <li>Display Setup: Confirm matplotlib plots render properly</li>
-        <li>Audio Playback: Optional - test audio playback for verification</li>
-        <li>Performance Check: Time loading of sample audio file</li>
-      </ul>
-
-      <p><strong>Presentation Materials Organization (1-2 minutes)</strong></p>
-      <ul>
-        <li>Slide Preparation: Ensure access to Slide 3 (code example) and Slide 4 (spectrogram preview)</li>
-        <li>Backup Materials: Prepare Slide 2 if time allows for audio concepts explanation</li>
-        <li>Timing Practice: Run through demo script once to verify 1-minute timing</li>
-      </ul>
+              <p><strong>Presentation Materials Organization (1-2 minutes)</strong></p>
+              <ul>
+                <li>Slide Preparation: Ensure access to Slide 3 (code example) and Slide 4 (spectrogram preview)</li>
+                <li>Backup Materials: Prepare Slide 2 if time allows for audio concepts explanation</li>
+                <li>Timing Practice: Run through demo script once to verify 1-minute timing</li>
+              </ul>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </>
   );
 }
