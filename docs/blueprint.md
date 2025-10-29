@@ -1,4 +1,4 @@
-# **App Name**: Lab Write-Ups
+# **App Name**: 1 Min Demos
 
 ## Core Features:
 
