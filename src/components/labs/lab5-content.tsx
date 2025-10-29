@@ -17,6 +17,9 @@ export function Lab5Content() {
           </CardTitle>
         </CardHeader>
         <CardContent>
+          <p className="mb-4 text-sm text-muted-foreground italic">
+            Note: I pulled together all of our design assignments into these 5 labs, then used Sourcegraph AMP and its ultra GLOP tools to create a way for each to be presented in 1 minute.
+          </p>
           <p className="mb-4">
             Let's master this 1-minute U-Net finale! We'll show the encoder-decoder architecture, demonstrate complete pipeline integration, and reveal how U-Net automates what was once manual analysis. The culmination of all 5 labs in 60 seconds!
           </p>

@@ -17,6 +17,9 @@ export function Lab4Content() {
           </CardTitle>
         </CardHeader>
         <CardContent>
+          <p className="mb-4 text-sm text-muted-foreground italic">
+            Note: I pulled together all of our design assignments into these 5 labs, then used Sourcegraph AMP and its ultra GLOP tools to create a way for each to be presented in 1 minute.
+          </p>
           <p className="mb-4">
             Let's conquer this 1-minute PyTorch showcase! We'll demonstrate GPU acceleration, seamless NumPy-to-tensor conversion, and the complete pipeline that takes audio all the way to GPU-ready tensors for U-Net processing. Pure neural network power!
           </p>

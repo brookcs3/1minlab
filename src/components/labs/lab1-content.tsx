@@ -18,6 +18,9 @@ export function Lab1Content() {
             </CardTitle>
           </CardHeader>
           <CardContent>
+            <p className="mb-4 text-sm text-muted-foreground italic">
+              Note: I pulled together all of our design assignments into these 5 labs, then used Sourcegraph AMP and its ultra GLOP tools to create a way for each to be presented in 1 minute.
+            </p>
             <p className="mb-4">
               Let's crush this 1-minute presentation! We're going to live-code our way through audio loading and visualization, showing how audio becomes numerical data for machine learning. It's fast, it's live, and it demonstrates the foundation of our entire audio pipeline!
             </p>

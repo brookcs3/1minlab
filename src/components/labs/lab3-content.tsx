@@ -17,6 +17,9 @@ export function Lab3Content() {
           </CardTitle>
         </CardHeader>
         <CardContent>
+          <p className="mb-4 text-sm text-muted-foreground italic">
+            Note: I pulled together all of our design assignments into these 5 labs, then used Sourcegraph AMP and its ultra GLOP tools to create a way for each to be presented in 1 minute.
+          </p>
           <p className="mb-4">
             Let's nail this 1-minute STFT demonstration! We'll transform audio waveforms into spectrograms with live coding, show the perfect round-trip reconstruction, and reveal how this creates the 2D data that U-Net processes. Technical magic in 60 seconds!
           </p>
