@@ -9,9 +9,6 @@ export function Lab1Content() {
   return (
     <>
       <h3>Lab 1: Data Integration and Preparation - 1-Minute Presentation Guide</h3>
-      <p>
-        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
-      </p>
       <h4>How We Present This in Exactly One Minute!</h4>
       <p>
         Let&apos;s crush this 1-minute presentation! We&apos;re going to live-code our way through audio loading and visualization, showing how audio becomes numerical data for machine learning. It&apos;s fast, it&apos;s live, and it demonstrates the foundation of our entire audio pipeline!
