@@ -13,7 +13,7 @@ export default function Home() {
       <header className="sticky top-0 z-10 border-b bg-card/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <h1 className="font-headline text-2xl font-bold">1 Min Demos</h1>
-          <p className="text-sm text-muted-foreground">Audio & Deep Learning</p>
+          <p className="text-sm text-muted-foreground">AI-Stem</p>
         </div>
       </header>
       <main className="flex-1">
