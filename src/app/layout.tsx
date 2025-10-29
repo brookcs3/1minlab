@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: '1 Min Demos',
-  description: 'A collection of lab write-ups on audio processing and deep learning.',
+  description: 'A collection of 1 demos prospects.',
 };
 
 export default function RootLayout({
