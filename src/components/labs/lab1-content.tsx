@@ -1,47 +1,173 @@
 export function Lab1Content() {
   return (
     <>
-      <h3>Introduction</h3>
+      <h3>Lab 1: Data Integration and Preparation - 1-Minute Presentation Guide</h3>
+      <h4>How We Present This in Exactly One Minute!</h4>
       <p>
-        This lab introduces the fundamental setup for our audio processing experiments. We will cover environment setup, basic code structure, and how to interpret initial outputs. The goal is to establish a consistent and reproducible development environment.
+        Let&apos;s crush this 1-minute presentation! We&apos;re going to live-code our way through audio loading and visualization, showing how audio becomes numerical data for machine learning. It&apos;s fast, it&apos;s live, and it demonstrates the foundation of our entire audio pipeline!
       </p>
+
+      <h4>What the 1-Minute Presentation Will Be</h4>
+
       <p>
-        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+        <strong>Timing: 0:00 - 0:15 (15 seconds): Introduction & Load Audio</strong>
       </p>
-      <h3>Code Snippet: Environment Check</h3>
-      <p>A simple Python script to confirm that core libraries are installed and accessible.</p>
+      <p>Code to Run:</p>
       <pre>
         <code>
-{`import numpy as np
-import torch
+{`import librosa
+import numpy as np
+import matplotlib.pyplot as plt
 
-def main():
-    print("--- Lab 1: Environment Check ---")
-    print(f"NumPy version: {np.__version__}")
-    print(f"PyTorch version: {torch.__version__}")
-    print("Environment setup is successful!")
+# Load audio file
+audio, sr = librosa.load('sample_audio.wav', sr=22050)
 
-if __name__ == "__main__":
-    main()`}
+# Display basic information
+print(f"Audio shape: {audio.shape}")
+print(f"Sample rate: {sr} Hz")
+print(f"Duration: {len(audio)/sr:.2f} seconds")`}
         </code>
       </pre>
-      <h3>Expected Output</h3>
-      <p>Running the script should produce an output similar to the following, confirming your setup.</p>
+      <p>
+        <strong>Narration (speak while typing/running):</strong> "Welcome to Lab 1! We start by loading audio into Python using librosa. This transforms any audio file into a NumPy array of numbers."
+      </p>
+      <p>Expected Output:</p>
       <pre>
         <code>
-{`--- Lab 1: Environment Check ---
-NumPy version: 1.26.4
-PyTorch version: 2.3.0
-Environment setup is successful!`}
+{`Audio shape: (661500,)
+Sample rate: 22050 Hz
+Duration: 30.00 seconds`}
         </code>
       </pre>
-      <h3>Troubleshooting</h3>
+
       <p>
-        If you encounter a <strong>ModuleNotFoundError</strong>, it means a required library is not installed. Please install it using pip:
+        <strong>Timing: 0:15 - 0:35 (20 seconds): Visualize Waveform</strong>
       </p>
+      <p>Code to Run:</p>
       <pre>
-        <code>pip install numpy torch</code>
+        <code>
+{`# Visualize first 1000 samples
+plt.figure(figsize=(12, 4))
+plt.plot(audio[:1000])
+plt.title("Audio Waveform (first 1000 samples)")
+plt.xlabel("Sample Number")
+plt.ylabel("Amplitude")
+plt.grid(True, alpha=0.3)
+plt.show()`}
+        </code>
       </pre>
+      <p>
+        <strong>Narration:</strong> "See this waveform? Each point represents the air pressure at a specific moment. The oscillations show the sound wave pattern."
+      </p>
+      <p>
+        <strong>Key Observation:</strong> Point out the waveform oscillations and amplitude range.
+      </p>
+
+      <p>
+        <strong>Timing: 0:35 - 0:50 (15 seconds): Spectrogram Preview</strong>
+      </p>
+      <p>Code to Run:</p>
+      <pre>
+        <code>
+{`# Preview spectrogram transformation
+spectrogram = librosa.stft(audio)
+magnitude = np.abs(spectrogram)
+
+print(f"Waveform shape: {audio.shape}")
+print(f"Spectrogram shape: {magnitude.shape}")
+print(f"Frequency bins: {magnitude.shape[0]}")
+print(f"Time frames: {magnitude.shape[1]}")`}
+        </code>
+      </pre>
+      <p>
+        <strong>Narration:</strong> "Here&apos;s a preview of Lab 3: STFT transforms our 1D waveform into a 2D spectrogram. This is what neural networks process!"
+      </p>
+      <p>Expected Output:</p>
+      <pre>
+        <code>
+{`Waveform shape: (661500,)
+Spectrogram shape: (1025, 646)
+Frequency bins: 1025
+Time frames: 646`}
+        </code>
+      </pre>
+
+      <p>
+        <strong>Timing: 0:50 - 1:00 (10 seconds): Wrap-up</strong>
+      </p>
+      <p>
+        <strong>Narration:</strong> "That&apos;s Lab 1! Audio is just numerical data. This foundation enables everything from NumPy processing to U-Net separation."
+      </p>
+
+      <h4>Key Points to Emphasize</h4>
+      <ul>
+        <li>Audio as numerical arrays (not "magic")</li>
+        <li>Sample rate and duration concepts</li>
+        <li>Waveform visualization</li>
+        <li>Preview of spectrogram transformation</li>
+        <li>Connection to the POC starting point</li>
+      </ul>
+
+      <h4>Troubleshooting</h4>
+      <ul>
+        <li>If audio file missing: Use <code>librosa.example(&apos;nutcracker&apos;)</code> as fallback</li>
+        <li>If plots don&apos;t show: Ensure matplotlib backend is configured</li>
+        <li>If slow loading: Use shorter audio file or duration parameter</li>
+      </ul>
+
+      <h4>Success Criteria</h4>
+      <ul>
+        <li>[ ] Audio loaded successfully</li>
+        <li>[ ] Basic info printed (shape, rate, duration)</li>
+        <li>[ ] Waveform plot displayed</li>
+        <li>[ ] Spectrogram preview shows transformation</li>
+        <li>[ ] Concepts explained clearly in 1 minute</li>
+      </ul>
+
+      <h4>Setup Beforehand (15-20 minutes total prep time)</h4>
+      <p>Each team member will assemble their own code and working repository for this lab.</p>
+
+      <p><strong>Environment Setup (5-7 minutes)</strong></p>
+      <ul>
+        <li>Install Dependencies: <code>pip install librosa numpy matplotlib</code></li>
+        <li>Verify Installation: Test imports in Python environment</li>
+        <li>IDE Setup: Prepare Jupyter notebook or Python IDE with code execution capabilities</li>
+      </ul>
+
+      <p><strong>Code Assembly and Repository Setup (7-10 minutes)</strong></p>
+      <ul>
+        <li>Create Working Directory: Set up dedicated folder for Lab 1</li>
+        <li>Assemble Code Files:
+          <ul>
+            <li>Create <code>lab1_basic.py</code> with functions: <code>load_audio_basic()</code>, <code>visualize_waveform()</code>, <code>spectrogram_preview()</code></li>
+            <li>Copy/paste from provided code examples or write from scratch</li>
+            <li>Add proper imports and docstrings</li>
+          </ul>
+        </li>
+        <li>Test Code Independently: Run functions with sample data to ensure they work</li>
+        <li>Version Control: Initialize git repo and commit working code</li>
+      </ul>
+
+      <p><strong>Files and Assets Preparation (3-5 minutes)</strong></p>
+      <ul>
+        <li>Audio File Acquisition: Obtain or download <code>sample_audio.wav</code> (30-second clip recommended)</li>
+        <li>Alternative Audio Sources: Prepare fallback options (librosa examples, personal audio files)</li>
+        <li>Test File Loading: Verify audio file loads correctly in your environment</li>
+      </ul>
+
+      <p><strong>Hardware and Display Verification (2-3 minutes)</strong></p>
+      <ul>
+        <li>Display Setup: Confirm matplotlib plots render properly</li>
+        <li>Audio Playback: Optional - test audio playback for verification</li>
+        <li>Performance Check: Time loading of sample audio file</li>
+      </ul>
+
+      <p><strong>Presentation Materials Organization (1-2 minutes)</strong></p>
+      <ul>
+        <li>Slide Preparation: Ensure access to Slide 3 (code example) and Slide 4 (spectrogram preview)</li>
+        <li>Backup Materials: Prepare Slide 2 if time allows for audio concepts explanation</li>
+        <li>Timing Practice: Run through demo script once to verify 1-minute timing</li>
+      </ul>
     </>
   );
 }
