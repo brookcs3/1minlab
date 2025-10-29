@@ -5,6 +5,9 @@ export function Lab2Content() {
       <p>
         NumPy is a powerful library for numerical operations. In audio processing, we often represent sound as a NumPy array. This lab demonstrates how to slice an audio signal into multiple segments for analysis.
       </p>
+      <p>
+        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+      </p>
       <h3>Volume Operations</h3>
       <p>
         We can easily adjust the volume of an audio signal by multiplying the NumPy array by a scalar value. This is a fundamental operation in audio engineering.

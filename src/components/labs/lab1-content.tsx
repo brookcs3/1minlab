@@ -5,6 +5,9 @@ export function Lab1Content() {
       <p>
         This lab introduces the fundamental setup for our audio processing experiments. We will cover environment setup, basic code structure, and how to interpret initial outputs. The goal is to establish a consistent and reproducible development environment.
       </p>
+      <p>
+        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+      </p>
       <h3>Code Snippet: Environment Check</h3>
       <p>A simple Python script to confirm that core libraries are installed and accessible.</p>
       <pre>

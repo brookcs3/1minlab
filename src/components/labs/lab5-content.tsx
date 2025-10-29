@@ -5,6 +5,9 @@ export function Lab5Content() {
       <p>
         U-Net is a convolutional neural network (CNN) architecture originally developed for biomedical image segmentation. Its distinctive U-shape, consisting of a contracting path (encoder) and an expansive path (decoder) with skip connections, makes it highly effective for tasks requiring precise localization, such as audio source separation from a spectrogram.
       </p>
+      <p>
+        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+      </p>
       <h3>Core Building Block: Double Convolution</h3>
       <p>
         The encoder and decoder are built from repeating blocks. A common block is a sequence of two 3x3 convolutions, each followed by Batch Normalization and a ReLU activation.

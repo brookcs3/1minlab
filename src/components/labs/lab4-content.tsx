@@ -5,6 +5,9 @@ export function Lab4Content() {
       <p>
         Before building models, it's crucial to verify the PyTorch installation and check if a GPU is available for acceleration. This ensures the environment is ready for deep learning tasks.
       </p>
+      <p>
+        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+      </p>
       <pre>
         <code>
 {`import torch

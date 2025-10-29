@@ -5,6 +5,9 @@ export function Lab3Content() {
       <p>
         The STFT is a crucial tool in audio analysis, allowing us to see how the frequency content of a signal changes over time. We use the <code>librosa</code> library to compute the STFT efficiently.
       </p>
+      <p>
+        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+      </p>
       <pre>
         <code>
 {`import librosa
