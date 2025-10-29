@@ -27,8 +27,8 @@ jobs:
       - name: Set NEXT_PUBLIC_BASE_PATH for GitHub Pages
         run: echo "NEXT_PUBLIC_BASE_PATH=/${{ github.event.repository.name }}" >> $GITHUB_ENV
 
-      - name: Build and export Next.js app
-        run: npm run build && npm run export
+      - name: Build Next.js app
+        run: npm run build
 
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
