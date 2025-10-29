@@ -12,7 +12,7 @@ export function Lab1Content() {
       <h3>Lab 1: Data Integration and Preparation - 1-Minute Presentation Guide</h3>
       <h4>How We Present This in Exactly One Minute!</h4>
       <p>
-        Let&apos;s crush this 1-minute presentation! We&apos;re going to live-code our way through audio loading and visualization, showing how audio becomes numerical data for machine learning. It&apos;s fast, it&apos;s live, and it demonstrates the foundation of our entire audio pipeline!
+        Let's crush this 1-minute presentation! We're going to live-code our way through audio loading and visualization, showing how audio becomes numerical data for machine learning. It's fast, it's live, and it demonstrates the foundation of our entire audio pipeline!
       </p>
 
       <h4>What the 1-Minute Presentation Will Be</h4>
@@ -88,7 +88,7 @@ print(f"Time frames: {magnitude.shape[1]}")`}
         </code>
       </pre>
       <p>
-        <strong>Narration:</strong> "Here&apos;s a preview of Lab 3: STFT transforms our 1D waveform into a 2D spectrogram. This is what neural networks process!"
+        <strong>Narration:</strong> "Here's a preview of Lab 3: STFT transforms our 1D waveform into a 2D spectrogram. This is what neural networks process!"
       </p>
       <p>Expected Output:</p>
       <pre>
@@ -104,8 +104,15 @@ Time frames: 646`}
         <strong>Timing: 0:50 - 1:00 (10 seconds): Wrap-up</strong>
       </p>
       <p>
-        <strong>Narration:</strong> "That&apos;s Lab 1! Audio is just numerical data. This foundation enables everything from NumPy processing to U-Net separation."
+        <strong>Narration:</strong> "That's Lab 1! Audio is just numerical data. This foundation enables everything from NumPy processing to U-Net separation."
       </p>
+      
+      <h4>Team Member Connections:</h4>
+      <ul>
+        <li><strong>Cameron's POC:</strong> Starts with loading "Intergalactic" audio file</li>
+        <li><strong>Yovannoa's Classifier:</strong> Demonstrated dataset loading and transformation</li>
+        <li><strong>cervanj2's Architecture:</strong> This is the foundation of the Preprocessing Layer</li>
+      </ul>
 
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1" className="border-t mt-4 pt-4">
@@ -174,8 +181,8 @@ Time frames: 646`}
 
               <h4>Troubleshooting</h4>
               <ul>
-                <li>If audio file missing: Use <code>librosa.example(&apos;nutcracker&apos;)</code> as fallback</li>
-                <li>If plots don&apos;t show: Ensure matplotlib backend is configured</li>
+                <li>If audio file missing: Use <code>librosa.example('nutcracker')</code> as fallback</li>
+                <li>If plots don't show: Ensure matplotlib backend is configured</li>
                 <li>If slow loading: Use shorter audio file or duration parameter</li>
               </ul>
 
