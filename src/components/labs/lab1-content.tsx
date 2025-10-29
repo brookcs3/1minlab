@@ -1,3 +1,4 @@
+
 import {
   Accordion,
   AccordionContent,
@@ -107,37 +108,6 @@ Time frames: 646`}
       </p>
 
       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-2" className="border-t mt-4 pt-4">
-          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Additional Details</AccordionTrigger>
-          <AccordionContent>
-            <div className="prose max-w-none pt-4">
-              <h4>Key Points to Emphasize</h4>
-              <ul>
-                <li>Audio as numerical arrays (not "magic")</li>
-                <li>Sample rate and duration concepts</li>
-                <li>Waveform visualization</li>
-                <li>Preview of spectrogram transformation</li>
-                <li>Connection to the POC starting point</li>
-              </ul>
-
-              <h4>Troubleshooting</h4>
-              <ul>
-                <li>If audio file missing: Use <code>librosa.example(&apos;nutcracker&apos;)</code> as fallback</li>
-                <li>If plots don&apos;t show: Ensure matplotlib backend is configured</li>
-                <li>If slow loading: Use shorter audio file or duration parameter</li>
-              </ul>
-
-              <h4>Success Criteria</h4>
-              <ul>
-                <li>[ ] Audio loaded successfully</li>
-                <li>[ ] Basic info printed (shape, rate, duration)</li>
-                <li>[ ] Waveform plot displayed</li>
-                <li>[ ] Spectrogram preview shows transformation</li>
-                <li>[ ] Concepts explained clearly in 1 minute</li>
-              </ul>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
         <AccordionItem value="item-1" className="border-t mt-4 pt-4">
           <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Setup Instructions</AccordionTrigger>
           <AccordionContent>
@@ -185,6 +155,37 @@ Time frames: 646`}
                 <li>Slide Preparation: Ensure access to Slide 3 (code example) and Slide 4 (spectrogram preview)</li>
                 <li>Backup Materials: Prepare Slide 2 if time allows for audio concepts explanation</li>
                 <li>Timing Practice: Run through demo script once to verify 1-minute timing</li>
+              </ul>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2" className="border-t mt-4 pt-4">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Additional Details</AccordionTrigger>
+          <AccordionContent>
+            <div className="prose max-w-none pt-4">
+              <h4>Key Points to Emphasize</h4>
+              <ul>
+                <li>Audio as numerical arrays (not "magic")</li>
+                <li>Sample rate and duration concepts</li>
+                <li>Waveform visualization</li>
+                <li>Preview of spectrogram transformation</li>
+                <li>Connection to the POC starting point</li>
+              </ul>
+
+              <h4>Troubleshooting</h4>
+              <ul>
+                <li>If audio file missing: Use <code>librosa.example(&apos;nutcracker&apos;)</code> as fallback</li>
+                <li>If plots don&apos;t show: Ensure matplotlib backend is configured</li>
+                <li>If slow loading: Use shorter audio file or duration parameter</li>
+              </ul>
+
+              <h4>Success Criteria</h4>
+              <ul>
+                <li>[ ] Audio loaded successfully</li>
+                <li>[ ] Basic info printed (shape, rate, duration)</li>
+                <li>[ ] Waveform plot displayed</li>
+                <li>[ ] Spectrogram preview shows transformation</li>
+                <li>[ ] Concepts explained clearly in 1 minute</li>
               </ul>
             </div>
           </AccordionContent>
