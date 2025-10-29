@@ -1,48 +1,232 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 export function Lab2Content() {
   return (
     <>
-      <h3>NumPy for Audio Slicing</h3>
+      <h3>Lab 2: NumPy for Audio Processing - 1-Minute Presentation Guide</h3>
+      <h4>How We Present This in Exactly One Minute!</h4>
       <p>
-        NumPy is a powerful library for numerical operations. In audio processing, we often represent sound as a NumPy array. This lab demonstrates how to slice an audio signal into multiple segments for analysis.
+        Let&apos;s dominate this 1-minute NumPy demo! We&apos;ll show how NumPy makes audio processing lightning-fast with vectorized operations, create audio signals, and demonstrate the 18-slice analysis that powers our measurements. Live coding at its finest!
       </p>
+
+      <h4>What the 1-Minute Presentation Will Be</h4>
+
       <p>
-        <em>It's important my exact text is mentioned. These are tutorials and we need to stress 1 min. Please include my entire text in the view write up.</em>
+        <strong>Timing: 0:00 - 0:15 (15 seconds): Introduction &amp; Generate Signal</strong>
       </p>
-      <h3>Volume Operations</h3>
-      <p>
-        We can easily adjust the volume of an audio signal by multiplying the NumPy array by a scalar value. This is a fundamental operation in audio engineering.
-      </p>
+      <p>Code to Run:</p>
       <pre>
         <code>
 {`import numpy as np
+import matplotlib.pyplot as plt
 
-def change_volume(signal: np.ndarray, factor: float) -> np.ndarray:
-    """Changes the volume of a signal."""
-    return signal * factor
+# Create a simple audio signal (440 Hz sine wave)
+sample_rate = 22050
+duration = 1.0  # seconds
+frequency = 440  # Hz (A note)
 
-# Example: Halve the volume
-audio_signal = np.random.randn(44100) # 1 second of audio at 44.1kHz
-quieter_signal = change_volume(audio_signal, 0.5)
+t = np.linspace(0, duration, int(sample_rate * duration))
+audio_signal = np.sin(2 * np.pi * frequency * t)
 
-print(f"Original signal mean power: {np.mean(audio_signal**2):.4f}")
-print(f"Quieter signal mean power: {np.mean(quieter_signal**2):.4f}")`}
+print(f"Created {len(audio_signal)} samples")
+print(f"Signal range: [{audio_signal.min():.3f}, {audio_signal.max():.3f}]")`}
         </code>
       </pre>
-      <h3>18-Slice Analysis</h3>
       <p>
-        For detailed analysis, we might divide our audio into a specific number of slices. Here's how you can divide an audio signal into 18 equal parts using NumPy.
+        <strong>Narration:</strong> "Lab 2 shows NumPy's power! We create 22,050 samples of a 440 Hz sine wave in one operation."
       </p>
+      <p>Expected Output:</p>
       <pre>
         <code>
-{`def slice_audio(signal: np.ndarray, num_slices: int = 18) -> list:
-    """Slices an audio signal into N equal parts."""
-    return np.array_split(signal, num_slices)
-
-slices = slice_audio(audio_signal, 18)
-print(f"\\nCreated {len(slices)} slices.")
-print(f"Shape of first slice: {slices[0].shape}")`}
+{`Created 22050 samples
+Signal range: [-1.000, 1.000]`}
         </code>
       </pre>
+
+      <p>
+        <strong>Timing: 0:15 - 0:35 (20 seconds): Volume Operations</strong>
+      </p>
+      <p>Code to Run:</p>
+      <pre>
+        <code>
+{`# Volume adjustments
+quiet_signal = audio_signal * 0.5  # Reduce volume
+loud_signal = audio_signal * 2.0   # Increase volume
+
+print(f"Original range: [{audio_signal.min():.3f}, {audio_signal.max():.3f}]")
+print(f"Quiet range: [{quiet_signal.min():.3f}, {quiet_signal.max():.3f}]")
+print(f"Loud range: [{loud_signal.min():.3f}, {loud_signal.max():.3f}]")
+
+# Visualize
+plt.figure(figsize=(12, 6))
+plt.subplot(3, 1, 1)
+plt.plot(audio_signal[:500])
+plt.title("Original Signal")
+plt.ylabel("Amplitude")
+
+plt.subplot(3, 1, 2)
+plt.plot(quiet_signal[:500])
+plt.title("Quiet Signal (×0.5)")
+plt.ylabel("Amplitude")
+
+plt.subplot(3, 1, 3)
+plt.plot(loud_signal[:500])
+plt.title("Loud Signal (×2.0)")
+plt.xlabel("Sample")
+plt.ylabel("Amplitude")
+
+plt.tight_layout()
+plt.show()`}
+        </code>
+      </pre>
+      <p>
+        <strong>Narration:</strong> "Volume changes are simple multiplication! NumPy processes the entire array simultaneously - 100x faster than loops."
+      </p>
+      <p>
+        <strong>Key Observation:</strong> Show the scaled amplitudes and identical shapes.
+      </p>
+
+      <p>
+        <strong>Timing: 0:35 - 0:55 (20 seconds): Cameron&apos;s 18-Slice Analysis</strong>
+      </p>
+      <p>Code to Run:</p>
+      <pre>
+        <code>
+{`import librosa
+
+# Load audio and create spectrogram
+audio, sr = librosa.load('sample_audio.wav', sr=22050)
+stft = librosa.stft(audio)
+magnitude = np.abs(stft)
+
+print(f"Full spectrogram: {magnitude.shape}")
+
+# Cameron's 18-slice approach
+num_slices = 18
+time_frames = magnitude.shape[1]
+slice_size = time_frames // num_slices
+
+print(f"Dividing into {num_slices} slices of {slice_size} frames each")
+
+# Show first 3 slices
+for i in range(3):
+    start = i * slice_size
+    end = start + slice_size
+    slice_data = magnitude[:, start:end]
+    slice_mean = slice_data.mean()
+    slice_std = slice_data.std()
+    print(f"Slice {i+1}: mean={slice_mean:.4f}, std={slice_std:.4f}")`}
+        </code>
+      </pre>
+      <p>
+        <strong>Narration:</strong> "The POC analyzes spectrograms in 18 slices using NumPy array slicing. This enables the 765,000 measurements!"
+      </p>
+      <p>Expected Output:</p>
+      <pre>
+        <code>
+{`Full spectrogram: (1025, 646)
+Dividing into 18 slices of 35 frames each
+Slice 1: mean=0.0234, std=0.0412
+Slice 2: mean=0.0198, std=0.0356
+Slice 3: mean=0.0251, std=0.0398`}
+        </code>
+      </pre>
+
+      <p>
+        <strong>Timing: 0:55 - 1:00 (5 seconds): Wrap-up</strong>
+      </p>
+      <p>
+        <strong>Narration:</strong> "NumPy makes audio processing fast and efficient - essential for the POC!"
+      </p>
+
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1" className="border-t mt-4 pt-4">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Setup Instructions</AccordionTrigger>
+          <AccordionContent>
+            <div className="prose max-w-none pt-4">
+              <h4>Setup Beforehand (20-25 minutes total prep time)</h4>
+              <p>Each team member will assemble their own code and working repository for this lab.</p>
+
+              <p><strong>Environment Setup (5-7 minutes)</strong></p>
+              <ul>
+                <li>Install Dependencies: <code>pip install numpy matplotlib librosa</code></li>
+                <li>Verify NumPy Installation: Test array operations and vectorization</li>
+                <li>IDE Preparation: Set up Python environment with matplotlib backend configured</li>
+              </ul>
+
+              <p><strong>Code Assembly and Repository Setup (10-12 minutes)</strong></p>
+              <ul>
+                <li>Create Working Directory: Establish dedicated Lab 2 folder with git initialization</li>
+                <li>Assemble Core Functions:
+                  <ul>
+                    <li>Create <code>lab2_numpy_basics.py</code> with functions: <code>create_sine_wave()</code>, <code>volume_operations()</code>, <code>slice_analysis()</code></li>
+                    <li>Implement vectorized operations and array slicing examples</li>
+                    <li>Add comprehensive docstrings and error handling</li>
+                  </ul>
+                </li>
+                <li>Independent Testing: Test each function with sample inputs</li>
+                <li>Performance Benchmarking: Compare NumPy operations vs Python loops</li>
+                <li>Commit Working Code: Use git to version control your implementation</li>
+              </ul>
+
+              <p><strong>Data and Assets Preparation (4-5 minutes)</strong></p>
+              <ul>
+                <li>Audio File Preparation: Obtain audio file from Lab 1 or download new sample</li>
+                <li>Spectrogram Generation: Pre-compute spectrogram data for 18-slice demo</li>
+                <li>Test Data Creation: Generate synthetic audio signals for sine wave demos</li>
+              </ul>
+
+              <p><strong>Hardware and Performance Verification (3-4 minutes)</strong></p>
+              <ul>
+                <li>NumPy Performance: Test array operations on available hardware (CPU/GPU)</li>
+                <li>Visualization Setup: Ensure matplotlib plots display correctly with multiple subplots</li>
+                <li>Memory Check: Verify sufficient RAM for spectrogram computations</li>
+              </ul>
+
+              <p><strong>Presentation Materials Organization (1-2 minutes)</strong></p>
+              <ul>
+                <li>Slide Access: Prepare Slide 3 (signal generation) and Slide 4 (18-slice analysis)</li>
+                <li>Demo Script Practice: Run complete demo sequence once for timing</li>
+                <li>Backup Content: Prepare broadcasting examples if needed</li>
+              </ul>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2" className="border-t mt-4 pt-4">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Additional Details</AccordionTrigger>
+          <AccordionContent>
+            <div className="prose max-w-none pt-4">
+              <h4>Key Points to Emphasize</h4>
+              <ul>
+                <li>Vectorized operations speed (10-100x faster)</li>
+                <li>Broadcasting for element-wise operations</li>
+                <li>Array slicing for segmenting data</li>
+                <li>Connection to the POC measurement approach</li>
+              </ul>
+
+              <h4>Troubleshooting</h4>
+              <ul>
+                <li>If audio file missing: Use sine wave generation as fallback</li>
+                <li>If memory issues: Reduce array sizes or use smaller audio</li>
+                <li>If slow operations: Ensure NumPy is installed correctly</li>
+              </ul>
+
+              <h4>Success Criteria</h4>
+              <ul>
+                <li>[ ] Sine wave generated with correct properties</li>
+                <li>[ ] Volume operations demonstrated with plots</li>
+                <li>[ ] 18-slice analysis shows slicing and statistics</li>
+                <li>[ ] Concepts explained within 1 minute timeframe</li>
+              </ul>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </>
   );
 }
