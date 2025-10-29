@@ -132,9 +132,9 @@ Time frames: 646`}</code></pre>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Cameron's POC:</strong> Starts with loading "Intergalactic" audio file</li>
-              <li><strong>Yovannoa's Classifier:</strong> Demonstrated dataset loading and transformation</li>
-              <li><strong>cervanj2's Architecture:</strong> This is the foundation of the Preprocessing Layer</li>
+              <li><strong>POC:</strong> Starts with loading "Intergalactic" audio file</li>
+              <li><strong>Classifier:</strong> Demonstrated dataset loading and transformation</li>
+              <li><strong>Architecture:</strong> This is the foundation of the Preprocessing Layer</li>
             </ul>
           </CardContent>
         </Card>

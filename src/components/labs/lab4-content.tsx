@@ -4,25 +4,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Code, MessageSquare, Terminal, Info, CheckCircle, AlertTriangle, Wrench } from "lucide-react";
 
 export function Lab4Content() {
   return (
-    <>
-      <h3>Lab 4: PyTorch Essentials - 1-Minute Presentation Guide</h3>
-      <h4>How We Present This in Exactly One Minute!</h4>
-      <p>
-        Let&apos;s conquer this 1-minute PyTorch showcase! We&apos;ll demonstrate GPU acceleration, seamless NumPy-to-tensor conversion, and the complete pipeline that takes audio all the way to GPU-ready tensors for U-Net processing. Pure neural network power!
-      </p>
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold font-headline">
+            Lab 4: PyTorch Essentials
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="mb-4">
+            Let's conquer this 1-minute PyTorch showcase! We'll demonstrate GPU acceleration, seamless NumPy-to-tensor conversion, and the complete pipeline that takes audio all the way to GPU-ready tensors for U-Net processing. Pure neural network power!
+          </p>
+        </CardContent>
+      </Card>
 
-      <h4>What the 1-Minute Presentation Will Be</h4>
-
-      <p>
-        <strong>Timing: 0:00 - 0:15 (15 seconds): PyTorch Setup Check</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`import torch
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:00 - 0:15 (15 seconds): PyTorch Setup Check</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`import torch
 import numpy as np
 
 print("=== PyTorch Setup Check ===")
@@ -34,32 +42,33 @@ if torch.cuda.is_available():
     print(f"GPU device: {torch.cuda.get_device_name(0)}")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-print(f"\\nSelected device: {device}")`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "Lab 4: PyTorch enables GPU acceleration! This provides the speed needed for U-Net neural networks."
-      </p>
-      <p>Expected Output (with GPU):</p>
-      <pre>
-        <code>
-{`=== PyTorch Setup Check ===
+print(f"\\nSelected device: {device}")`}</code></pre>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+            <p className="pl-6 border-l-2 border-accent ml-2">"Lab 4: PyTorch enables GPU acceleration! This provides the speed needed for U-Net neural networks."</p>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Terminal size={16} /> Expected Output (with GPU):</h4>
+            <pre><code>{`=== PyTorch Setup Check ===
 PyTorch version: 2.0.0
 CUDA available: True
 CUDA version: 12.1
 GPU device: NVIDIA GeForce RTX 2070 Super Max-Q
 
-Selected device: cuda`}
-        </code>
-      </pre>
+Selected device: cuda`}</code></pre>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:15 - 0:35 (20 seconds): NumPy to PyTorch Conversion</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`# Simulate spectrogram data (1025 freq × 646 time)
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:15 - 0:35 (20 seconds): NumPy to PyTorch Conversion</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`# Simulate spectrogram data (1025 freq × 646 time)
 spectrogram_np = np.random.randn(1025, 646).astype(np.float32)
 print(f"NumPy array: shape={spectrogram_np.shape}, dtype={spectrogram_np.dtype}")
 
@@ -77,30 +86,31 @@ print(f"After processing: {processed.shape}, device={processed.device}")
 
 # Back to NumPy
 result_np = processed.cpu().numpy()
-print(f"Back to NumPy: {result_np.shape}")`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "Seamless conversion: NumPy spectrograms become PyTorch tensors on GPU. Neural operations happen instantly!"
-      </p>
-      <p>Expected Output:</p>
-      <pre>
-        <code>
-{`NumPy array: shape=(1025, 646), dtype=float32
+print(f"Back to NumPy: {result_np.shape}")`}</code></pre>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+            <p className="pl-6 border-l-2 border-accent ml-2">"Seamless conversion: NumPy spectrograms become PyTorch tensors on GPU. Neural operations happen instantly!"</p>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Terminal size={16} /> Expected Output:</h4>
+            <pre><code>{`NumPy array: shape=(1025, 646), dtype=float32
 PyTorch tensor (CPU): torch.Size([1025, 646]), torch.float32
 PyTorch tensor (GPU): torch.Size([1025, 646]), device=cuda:0
 After processing: torch.Size([1025, 646]), device=cuda:0
-Back to NumPy: (1025, 646)`}
-        </code>
-      </pre>
+Back to NumPy: (1025, 646)`}</code></pre>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:35 - 0:55 (20 seconds): Complete Pipeline Integration</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`import librosa
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:35 - 0:55 (20 seconds): Complete Pipeline Integration</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`import librosa
 
 # Step 1-3: Audio → Spectrogram (Labs 1-3)
 audio, sr = librosa.load('sample_audio.wav', sr=22050)
@@ -120,16 +130,15 @@ print(f"3. PyTorch tensor: {tensor.shape}")
 print(f"   Batch: {tensor.shape[0]}, Channels: {tensor.shape[1]}")
 print(f"   Frequency: {tensor.shape[2]}, Time: {tensor.shape[3]}")
 print(f"   Device: {tensor.device}")
-print("\\nReady for U-Net processing!")`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "Complete integration: Audio file → NumPy spectrogram → PyTorch tensor on GPU. This is what U-Net processes!"
-      </p>
-      <p>Expected Output:</p>
-      <pre>
-        <code>
-{`=== Complete Pipeline: Audio → GPU Tensor ===
+print("\\nReady for U-Net processing!")`}</code></pre>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+            <p className="pl-6 border-l-2 border-accent ml-2">"Complete integration: Audio file → NumPy spectrogram → PyTorch tensor on GPU. This is what U-Net processes!"</p>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Terminal size={16} /> Expected Output:</h4>
+            <pre><code>{`=== Complete Pipeline: Audio → GPU Tensor ===
 1. Audio loaded: (661500,)
 2. Spectrogram: (1025, 646)
 3. PyTorch tensor: torch.Size([1, 1, 1025, 646])
@@ -137,20 +146,28 @@ print("\\nReady for U-Net processing!")`}
    Frequency: 1025, Time: 646
    Device: cuda:0
 
-Ready for U-Net processing!`}
-        </code>
-      </pre>
+Ready for U-Net processing!`}</code></pre>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:55 - 1:00 (5 seconds): Wrap-up</strong>
-      </p>
-      <p>
-        <strong>Narration:</strong> "PyTorch bridges audio processing to neural networks - GPU acceleration makes U-Net fast!"
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:55 - 1:00 (5 seconds): Wrap-up</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+          <p className="pl-6 border-l-2 border-accent ml-2">"PyTorch bridges audio processing to neural networks - GPU acceleration makes U-Net fast!"</p>
+        </CardContent>
+      </Card>
 
       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1" className="border-t mt-4 pt-4">
-          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Setup Instructions</AccordionTrigger>
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline">
+            <div className="flex items-center gap-2">
+              <Wrench size={16}/> View Setup Instructions
+            </div>
+          </AccordionTrigger>
           <AccordionContent>
             <div className="prose max-w-none pt-4">
               <h4>Setup Beforehand (30-35 minutes total prep time)</h4>
@@ -205,26 +222,30 @@ Ready for U-Net processing!`}
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2" className="border-t mt-4 pt-4">
-          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Additional Details</AccordionTrigger>
+        <AccordionItem value="item-2">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline">
+            <div className="flex items-center gap-2">
+              <Info size={16}/> View Additional Details
+            </div>
+          </AccordionTrigger>
           <AccordionContent>
             <div className="prose max-w-none pt-4">
-              <h4>Key Points to Emphasize</h4>
+              <h4 className="flex items-center gap-2"><Info size={16} /> Key Points to Emphasize</h4>
               <ul>
                 <li>GPU acceleration benefits for neural networks</li>
                 <li>Seamless NumPy ↔ PyTorch conversion</li>
                 <li>4D tensor shape requirements (batch, channels, height, width)</li>
-                <li>Integration with Ryan and Yovannoa&apos;s PyTorch learning</li>
+                <li>Integration with other PyTorch learning</li>
               </ul>
 
-              <h4>Troubleshooting</h4>
+              <h4 className="flex items-center gap-2 mt-4"><AlertTriangle size={16} /> Troubleshooting</h4>
               <ul>
                 <li>If no GPU: Code works on CPU (just slower)</li>
                 <li>If CUDA errors: Check PyTorch installation</li>
                 <li>If memory issues: Use smaller tensors or shorter audio</li>
               </ul>
 
-              <h4>Success Criteria</h4>
+              <h4 className="flex items-center gap-2 mt-4"><CheckCircle size={16} /> Success Criteria</h4>
               <ul>
                 <li>[ ] PyTorch setup verified with GPU detection</li>
                 <li>[ ] NumPy array successfully converted to GPU tensor</li>
@@ -235,6 +256,6 @@ Ready for U-Net processing!`}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </>
+    </div>
   );
 }

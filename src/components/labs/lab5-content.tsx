@@ -4,25 +4,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Code, MessageSquare, Terminal, Info, CheckCircle, AlertTriangle, Wrench } from "lucide-react";
 
 export function Lab5Content() {
   return (
-    <>
-      <h3>Lab 5: U-Net Architecture - 1-Minute Presentation Guide</h3>
-      <h4>How We Present This in Exactly One Minute!</h4>
-      <p>
-        Let&apos;s master this 1-minute U-Net finale! We&apos;ll show the encoder-decoder architecture, demonstrate complete pipeline integration, and reveal how U-Net automates what was once manual analysis. The culmination of all 5 labs in 60 seconds!
-      </p>
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold font-headline">
+            Lab 5: U-Net Architecture
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="mb-4">
+            Let's master this 1-minute U-Net finale! We'll show the encoder-decoder architecture, demonstrate complete pipeline integration, and reveal how U-Net automates what was once manual analysis. The culmination of all 5 labs in 60 seconds!
+          </p>
+        </CardContent>
+      </Card>
 
-      <h4>What the 1-Minute Presentation Will Be</h4>
-
-      <p>
-        <strong>Timing: 0:00 - 0:15 (15 seconds): U-Net Building Block</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`import torch
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:00 - 0:15 (15 seconds): U-Net Building Block</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`import torch
 import torch.nn as nn
 
 # Simple U-Net building block
@@ -48,29 +56,30 @@ output = block(input_tensor)
 print("=== U-Net Building Block ===")
 print(f"Input: {input_tensor.shape}")
 print(f"Output: {output.shape}")
-print(f"Parameters: {sum(p.numel() for p in block.parameters()):,}")`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "Lab 5: U-Net&apos;s encoder-decoder architecture learns to separate spectrograms. This block processes frequency patterns!"
-      </p>
-      <p>Expected Output:</p>
-      <pre>
-        <code>
-{`=== U-Net Building Block ===
+print(f"Parameters: {sum(p.numel() for p in block.parameters()):,}")`}</code></pre>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+            <p className="pl-6 border-l-2 border-accent ml-2">"Lab 5: U-Net's encoder-decoder architecture learns to separate spectrograms. This block processes frequency patterns!"</p>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Terminal size={16} /> Expected Output:</h4>
+            <pre><code>{`=== U-Net Building Block ===
 Input: torch.Size([1, 1, 1025, 646])
 Output: torch.Size([1, 16, 1025, 646])
-Parameters: 448`}
-        </code>
-      </pre>
+Parameters: 448`}</code></pre>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:15 - 0:45 (30 seconds): Complete Pipeline Integration</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`import librosa
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:15 - 0:45 (30 seconds): Complete Pipeline Integration</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`import librosa
 import numpy as np
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -114,16 +123,15 @@ vocals = librosa.istft(stft_vocals, hop_length=512, length=len(audio))
 music = librosa.istft(stft_music, hop_length=512, length=len(audio))
 
 print(f"Separated vocals: {vocals.shape}")
-print(f"Separated music: {music.shape}")`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "All 5 labs integrated! Audio → spectrogram → tensor → U-Net masks → separated vocals and music. U-Net automates the POC&apos;s manual analysis!"
-      </p>
-      <p>Expected Output:</p>
-      <pre>
-        <code>
-{`Processing on: cuda
+print(f"Separated music: {music.shape}")`}</code></pre>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+            <p className="pl-6 border-l-2 border-accent ml-2">"All 5 labs integrated! Audio → spectrogram → tensor → U-Net masks → separated vocals and music. U-Net automates the POC's manual analysis!"</p>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Terminal size={16} /> Expected Output:</h4>
+            <pre><code>{`Processing on: cuda
 
 === Step 1-3: Audio → Spectrogram ===
 Audio: (661500,) → Spectrogram: (1025, 646)
@@ -137,20 +145,28 @@ Music mask: torch.Size([1, 1, 1025, 646])
 
 === Step 6-7: Apply Masks & Reconstruct ===
 Separated vocals: (661500,)
-Separated music: (661500,)`}
-        </code>
-      </pre>
+Separated music: (661500,)`}</code></pre>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:45 - 1:00 (15 seconds): Wrap-up</strong>
-      </p>
-      <p>
-        <strong>Narration:</strong> "U-Net processes spectrograms to create separation masks. This automates the POC - neural networks learn what was done manually!"
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:45 - 1:00 (15 seconds): Wrap-up</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+          <p className="pl-6 border-l-2 border-accent ml-2">"U-Net processes spectrograms to create separation masks. This automates the POC - neural networks learn what was done manually!"</p>
+        </CardContent>
+      </Card>
 
       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1" className="border-t mt-4 pt-4">
-          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Setup Instructions</AccordionTrigger>
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline">
+            <div className="flex items-center gap-2">
+              <Wrench size={16}/> View Setup Instructions
+            </div>
+          </AccordionTrigger>
           <AccordionContent>
             <div className="prose max-w-none pt-4">
               <h4>Setup Beforehand (35-40 minutes total prep time)</h4>
@@ -207,26 +223,30 @@ Separated music: (661500,)`}
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2" className="border-t mt-4 pt-4">
-          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Additional Details</AccordionTrigger>
+        <AccordionItem value="item-2">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline">
+            <div className="flex items-center gap-2">
+              <Info size={16}/> View Additional Details
+            </div>
+          </AccordionTrigger>
           <AccordionContent>
             <div className="prose max-w-none pt-4">
-              <h4>Key Points to Emphasize</h4>
+              <h4 className="flex items-center gap-2"><Info size={16} /> Key Points to Emphasize</h4>
               <ul>
                 <li>U-Net encoder-decoder architecture for spectrogram processing</li>
                 <li>Complete integration of all 5 labs</li>
-                <li>Automation of the POC&apos;s manual 18-slice analysis</li>
+                <li>Automation of the POC's manual 18-slice analysis</li>
                 <li>Pipeline: Audio → Spectrogram → Tensor → Masks → Separated Audio</li>
               </ul>
 
-              <h4>Troubleshooting</h4>
+              <h4 className="flex items-center gap-2 mt-4"><AlertTriangle size={16} /> Troubleshooting</h4>
               <ul>
                 <li>If GPU unavailable: Use CPU (slower but works)</li>
                 <li>If memory issues: Reduce tensor sizes</li>
                 <li>If audio processing slow: Use shorter audio file</li>
               </ul>
 
-              <h4>Success Criteria</h4>
+              <h4 className="flex items-center gap-2 mt-4"><CheckCircle size={16} /> Success Criteria</h4>
               <ul>
                 <li>[ ] U-Net block demonstrates convolution operations</li>
                 <li>[ ] Complete pipeline shows all 5 labs integrated</li>
@@ -238,6 +258,6 @@ Separated music: (661500,)`}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </>
+    </div>
   );
 }

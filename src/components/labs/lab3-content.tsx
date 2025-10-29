@@ -1,29 +1,36 @@
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Code, MessageSquare, Terminal, Info, CheckCircle, AlertTriangle, Wrench } from "lucide-react";
 
 export function Lab3Content() {
   return (
-    <>
-      <h3>Lab 3: librosa STFT and Spectrograms - 1-Minute Presentation Guide</h3>
-      <h4>How We Present This in Exactly One Minute!</h4>
-      <p>
-        Let&apos;s nail this 1-minute STFT demonstration! We&apos;ll transform audio waveforms into spectrograms with live coding, show the perfect round-trip reconstruction, and reveal how this creates the 2D data that U-Net processes. Technical magic in 60 seconds!
-      </p>
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold font-headline">
+            Lab 3: librosa STFT and Spectrograms
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="mb-4">
+            Let's nail this 1-minute STFT demonstration! We'll transform audio waveforms into spectrograms with live coding, show the perfect round-trip reconstruction, and reveal how this creates the 2D data that U-Net processes. Technical magic in 60 seconds!
+          </p>
+        </CardContent>
+      </Card>
 
-      <h4>What the 1-Minute Presentation Will Be</h4>
-
-      <p>
-        <strong>Timing: 0:00 - 0:15 (15 seconds): Introduction &amp; STFT Transformation</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`import librosa
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:00 - 0:15 (15 seconds): Introduction & STFT Transformation</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`import librosa
 import numpy as np
 
 # Load audio
@@ -37,29 +44,30 @@ phase = np.angle(stft)
 
 print(f"STFT shape: {stft.shape} (complex)")
 print(f"Magnitude shape: {magnitude.shape}")
-print(f"Phase shape: {phase.shape}")`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "Lab 3: STFT transforms 1D audio into 2D spectrograms! This is the core of the POC and our U-Net pipeline."
-      </p>
-      <p>Expected Output:</p>
-      <pre>
-        <code>
-{`Audio loaded: (661500,) samples
+print(f"Phase shape: {phase.shape}")`}</code></pre>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+            <p className="pl-6 border-l-2 border-accent ml-2">"Lab 3: STFT transforms 1D audio into 2D spectrograms! This is the core of the POC and our U-Net pipeline."</p>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Terminal size={16} /> Expected Output:</h4>
+            <pre><code>{`Audio loaded: (661500,) samples
 STFT shape: (1025, 1293) (complex)
 Magnitude shape: (1025, 1293)
-Phase shape: (1025, 1293)`}
-        </code>
-      </pre>
+Phase shape: (1025, 1293)`}</code></pre>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:15 - 0:35 (20 seconds): Visualize Spectrogram</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`import librosa.display
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:15 - 0:35 (20 seconds): Visualize Spectrogram</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`import librosa.display
 import matplotlib.pyplot as plt
 
 fig, axes = plt.subplots(2, 1, figsize=(12, 8))
@@ -80,23 +88,27 @@ axes[1].set_title('Phase Spectrogram')
 fig.colorbar(axes[1].images[0], ax=axes[1])
 
 plt.tight_layout()
-plt.show()`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "Look at this! Magnitude shows loudness, phase shows timing. Bright areas are vocal frequencies - this is image-like data for U-Net."
-      </p>
-      <p>
-        <strong>Key Observation:</strong> Point out frequency patterns and color differences between magnitude/phase.
-      </p>
+plt.show()`}</code></pre>
+          </div>
+          <div>
+              <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+              <p className="pl-6 border-l-2 border-accent ml-2">"Look at this! Magnitude shows loudness, phase shows timing. Bright areas are vocal frequencies - this is image-like data for U-Net."</p>
+          </div>
+           <div>
+              <h4 className="font-semibold flex items-center gap-2 mb-2"><Info size={16} /> Key Observation:</h4>
+              <p className="pl-6 border-l-2 border-accent ml-2">Point out frequency patterns and color differences between magnitude/phase.</p>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:35 - 0:55 (20 seconds): Round-Trip Reconstruction</strong>
-      </p>
-      <p>Code to Run:</p>
-      <pre>
-        <code>
-{`# Reconstruct audio with ISTFT
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:35 - 0:55 (20 seconds): Round-Trip Reconstruction</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Code size={16} /> Code to Run:</h4>
+            <pre><code>{`# Reconstruct audio with ISTFT
 reconstructed = librosa.istft(stft, hop_length=512, length=len(audio))
 
 # Check quality
@@ -107,33 +119,40 @@ print(f"Original length: {len(audio)}")
 print(f"Reconstructed length: {len(reconstructed)}")
 print(f"Max difference: {difference:.2e}")
 print(f"Mean difference: {mean_diff:.2e}")
-print(f"Quality: {'Perfect!' if difference < 1e-5 else 'Very Good'}")`}
-        </code>
-      </pre>
-      <p>
-        <strong>Narration:</strong> "ISTFT reverses STFT perfectly! This lossless transformation enables our complete audio separation pipeline."
-      </p>
-      <p>Expected Output:</p>
-      <pre>
-        <code>
-{`Original length: 661500
+print(f"Quality: {'Perfect!' if difference < 1e-5 else 'Very Good'}")`}</code></pre>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+            <p className="pl-6 border-l-2 border-accent ml-2">"ISTFT reverses STFT perfectly! This lossless transformation enables our complete audio separation pipeline."</p>
+          </div>
+          <div>
+            <h4 className="font-semibold flex items-center gap-2 mb-2"><Terminal size={16} /> Expected Output:</h4>
+            <pre><code>{`Original length: 661500
 Reconstructed length: 661500
 Max difference: 1.23e-13
 Mean difference: 1.45e-14
-Quality: Perfect!`}
-        </code>
-      </pre>
+Quality: Perfect!`}</code></pre>
+          </div>
+        </CardContent>
+      </Card>
 
-      <p>
-        <strong>Timing: 0:55 - 1:00 (5 seconds): Wrap-up</strong>
-      </p>
-      <p>
-        <strong>Narration:</strong> "STFT/ISTFT is reversible - the foundation for U-Net audio processing!"
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base font-semibold font-headline">Timing: 0:55 - 1:00 (5 seconds): Wrap-up</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h4 className="font-semibold flex items-center gap-2 mb-2"><MessageSquare size={16} /> Narration:</h4>
+          <p className="pl-6 border-l-2 border-accent ml-2">"STFT/ISTFT is reversible - the foundation for U-Net audio processing!"</p>
+        </CardContent>
+      </Card>
 
       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1" className="border-t mt-4 pt-4">
-          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Setup Instructions</AccordionTrigger>
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline">
+            <div className="flex items-center gap-2">
+              <Wrench size={16}/> View Setup Instructions
+            </div>
+          </AccordionTrigger>
           <AccordionContent>
             <div className="prose max-w-none pt-4">
               <h4>Setup Beforehand (25-30 minutes total prep time)</h4>
@@ -186,11 +205,15 @@ Quality: Perfect!`}
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-2" className="border-t mt-4 pt-4">
-          <AccordionTrigger className="text-accent-foreground hover:no-underline text-base font-semibold">View Additional Details</AccordionTrigger>
+        <AccordionItem value="item-2">
+          <AccordionTrigger className="text-accent-foreground hover:no-underline">
+            <div className="flex items-center gap-2">
+              <Info size={16}/> View Additional Details
+            </div>
+          </AccordionTrigger>
           <AccordionContent>
             <div className="prose max-w-none pt-4">
-              <h4>Key Points to Emphasize</h4>
+              <h4 className="flex items-center gap-2"><Info size={16} /> Key Points to Emphasize</h4>
               <ul>
                 <li>STFT as time-frequency transformation</li>
                 <li>Spectrograms as 2D representations for neural networks</li>
@@ -198,14 +221,14 @@ Quality: Perfect!`}
                 <li>Connection to the POC manual analysis</li>
               </ul>
 
-              <h4>Troubleshooting</h4>
+              <h4 className="flex items-center gap-2 mt-4"><AlertTriangle size={16} /> Troubleshooting</h4>
               <ul>
                 <li>If STFT slow: Reduce <code>n_fft</code> or use shorter audio</li>
                 <li>If visualization issues: Check matplotlib backend</li>
                 <li>If reconstruction imperfect: Verify <code>hop_length</code> consistency</li>
               </ul>
 
-              <h4>Success Criteria</h4>
+              <h4 className="flex items-center gap-2 mt-4"><CheckCircle size={16} /> Success Criteria</h4>
               <ul>
                 <li>[ ] STFT computed with correct shapes</li>
                 <li>[ ] Spectrogram visualized with magnitude and phase</li>
@@ -216,6 +239,6 @@ Quality: Perfect!`}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </>
+    </div>
   );
 }
